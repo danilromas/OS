@@ -1,0 +1,183 @@
+1
+
+Set fs = CreateObject("Scripting.FileSystemObject")
+Set a = fs.CreateTextFile("С:\ter", True)
+a.WriteLine("This is a test.")
+a.Close
+
+2
+
+CreateObject("WScript.Shell").Run "control.exe appwiz.cpl"
+
+3
+
+set WSHShell = WScript.CreateObject("WScript.Shell")
+WSHShell.RegWrite "HKCU\NewKey\NewValue", 1, "REG_DWORD"
+WSHShell.Run "regedit",3
+
+4
+
+MsgBox date&vbNewLine&Time
+
+5
+
+set WshShell1 = wscript.createobject("Wscript.shell")
+Razdel=WshShell1.RegRead("HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\BITS\")
+WScript.Echo Razdel
+
+6
+
+set ex = wscript.createobject("wscript.shell")
+WScript.Echo "MAGIC"
+ex.run "EXCEL.EXE",2,true
+
+7
+
+Dim WshShell, Path
+Set WshShell = WScript.CreateObject("WScript.Shell")
+On Error Resume Next
+
+Path = "notepad C:\AUTOEXEC.BAT"
+WshShell.Run Path
+
+Path = "notepad C:\CONFIG.SYS"
+WshShell.Run Path
+
+8
+
+Dim shell
+Dim txt
+Set shell = WScript.CreateObject("WScript.Shell")
+WScript.Echo "notepad opens. . . "
+txt=inputbox("new name txt file",,"new.html")
+shell.Run "notepad "&txt
+WScript.Sleep 1000
+shell.AppActivate "notepad"
+
+9
+
+Set object = CreateObject("WScript.Shell")
+object.Run "control.exe desk.cpl", 1
+Set object = Nothing
+
+10
+
+Dim WWORD, word, KolSlov, shell
+Set shell = WScript.CreateObject("WScript.Shell")
+Set WWORD=WScript.CreateObject("Word.Application")
+Set word=WWORD.Documents.Open("D:\1.docx")
+WWORD.Visible=true
+WScript.Echo "All words: " & WWORD.ActiveDocument.ComputeStatistics(KolSlov)
+
+11
+
+Dim shell
+Set shell = WScript.CreateObject("WScript.Shell")
+
+
+Dim short, desk, deskpath
+
+deskpath = shell.SpecialFolders("Desktop")
+
+Set short = shell.CreateShortcut(deskpath & "\excel.lnk")
+
+short.TargetPath = shell.ExpandEnvironmentStrings("C:\Program Files (x86)\Microsoft Office\root\Office16\EXCEL.EXE")
+short.WorkingDirectory = shell.ExpandEnvironmentStrings("%windir%")
+short.WindowStyle = 4
+short.IconLocation = shell.ExpandEnvironmentStrings("C:\Program Files (x86)\Microsoft Office\root\Office16\EXCEL.EXE, 0")
+short.Save
+
+WScript.Echo "create"
+
+12
+
+Set shell = WScript.CreateObject("WScript.Shell")
+v = shell.ExpandEnvironmentStrings("%SystemRoot%")
+MsgBox v
+
+13
+
+Dim oFSO
+Dim oDriveInfo
+
+Set oFSO = CreateObject("Scripting.FileSystemObject") ' Создаём объект для работы с файловой системой
+
+Set oDriveInfo = oFSO.GetDrive("D:\") ' Получаем диск D:\
+
+
+MsgBox("Disc - " & oDriveInfo.DriveLetter & vbCrLf & _
+"Metka Disk - " & oDriveInfo.VolumeName & vbCrLf & _
+"Type Disk - " & GetDriveType(oDriveInfo.DriveType) & vbCrLf & _
+"File system - " & oDriveInfo.FileSystem & vbCrLf & _
+"Obiem disk - " & oDriveInfo.TotalSize & " byte" & vbCrLf & _
+"CBobodHoe MecTo for disk - " & oDriveInfo.AvailableSpace & " byte" & vbCrLf & _
+"CBobodHoe MecTo on disk - " & oDriveInfo.FreeSpace & " byte" & vbCrLf & _
+"Seriyniy number disk - " & oDriveInfo.SerialNumber & vbCrLf)
+Function GetDriveType(nType) ' Функция, преобразующая тип диска из числового представления в удобное человеку
+Dim sDriveType
+
+Select Case nType
+ Case 0
+sDriveType = "Heu3BecTHoe ycTpoucTBo"
+ Case 1
+ sDriveType = "ycTpoucTBo co cmeHHum HocuTelem"
+ Case 2
+ sDriveType = "HardWare"
+ Case 3
+ sDriveType = "Setevou disk"
+ Case 4
+ sDriveType = "CD-ROM"
+ Case 5
+sDriveType = "RAM-disk"
+ End Select
+
+GetDriveType = sDriveType
+End Function
+
+14
+
+Dim FSO, MyFile
+Set FSO = CreateObject("Scripting.FileSystemObject")
+Set MyFile = fso.CreateTextFile("d:\testfile.txt", true)
+
+\\delete
+
+Dim FSO, file
+Set FSO= CreateObject("Scripting.FileSystemObject")
+Set file= FSO.GetFile("d:\testfile.txt")
+file.delete
+
+\\copy
+
+Function CopyFiles(FiletoCopy,DestinationFolder)
+Dim fso
+Dim Filepath,WarFileLocation
+Set fso = CreateObject("Scripting.FileSystemObject")
+If Right(DestinationFolder,1) <>"\"Then
+DestinationFolder=DestinationFolder&"\"
+End If
+fso.CopyFile FiletoCopy,DestinationFolder,True
+FiletoCopy = Split(FiletoCopy,"\")
+
+End Function
+
+15
+
+Set objNetwork = CreateObject("WScript.Network")
+strComputer = objNetwork.ComputerName
+
+Set colAccounts = GetObject("WinNT://" & strComputer & "")
+Set objUser = colAccounts.Create("user", "LocalAdmin")
+objUser.SetPassword "Hello123456789"
+objUser.SetInfo
+
+Set objGroup = GetObject("WinNT://" & strComputer & "/Администраторы,group")
+Set objUser = GetObject("WinNT://" & strComputer & "/LocalAdmin,user")
+objGroup.Add(objUser.ADsPath)
+
+Const ADS_UF_DONT_EXPIRE_PASSWD = &h10000
+UserFlags = objUser.Get("UserFlags")
+objPasswordExpirationFlag = UserFlags OR ADS_UF_DONT_EXPIRE_PASSWD
+objUser.Put "userFlags", objPasswordExpirationFlag
+objUser.SetInfo
+
