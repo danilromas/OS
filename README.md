@@ -1,4 +1,4 @@
-# OS
+79# OS
 
 'Laba 4
 
@@ -243,3 +243,23 @@ zad 5
   'MyShortcut.TargetPath = "https://www.yandex.ru" 
   'MyShortcut.Save() 
    
+  'zad 4 
+   
+  'set WshShell = WScript.CreateObject("WScript.Shell") 
+   
+  'SpecialFolders - возвращает путь к спец. папкам Windows. 
+   
+  'Set DesktopPath = WshShell.SpecialFolders 
+  'Set MyShortcut = WSHShell.CreateShortcut(DesktopPath("Favorites") + "\\calc.lnk") 
+   
+  'ExpandEnvironmentStrings - Возвращает значение переменной среды текущего командного окна 
+   
+  'MyShortcut.TargetPath = WSHShell.ExpandEnvironmentStrings("%windir%\system32\\calc.exe") 
+  Loading... 
+  WshShell.Run 
+  'MyShortcut.WorkingDirectory = WSHShell.ExpandEnvironmentStrings("%windir\system32%") 
+  'MyShortcut.WindowStyle = 3 
+  'MyShortcut.IconLocation = WSHShell.ExpandEnvironmentStrings("%windir%\system32\calc.exe, 0") 
+  'MyShortcut.Hotkey = "CTRL+ALT+f" 
+  'MyShortcut.WorkingDirectory = WshShell.ExpandEnvironmentStrings("%TEMP%") 
+  'MyShortcut.Save()  
