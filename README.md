@@ -218,3 +218,12 @@ Set WshShell = CreateObject("WScript.Shell")
   'WshShell.CurrentDirectory = WshShell.ExpandEnvironmentStrings("%UserProfile%") 
   'WScript.Echo "Standart Catalog: " + vbTab + WshShell.CurrentDirectory + vbNewLine + "Operation system catalog: " + vbTab + shall 
 
+zad 3 
+  'Dim WshShell, WshFldrs, SpecFldr, s 
+  'Set WshShell = WScript.CreateObject("Wscript.Shell") 
+  'Set WshFldrs = WshShell.SpecialFolders 
+  's="All special folders:" & vbCrLf & vbCrLf 
+  'For Each SpecFldr In WshFldrs 
+  ' s=s & SpecFldr & vbCrLf 
+  'Next 
+  'WScript.Echo s 
