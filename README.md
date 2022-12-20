@@ -211,3 +211,10 @@
 'objPasswordExpirationFlag = UserFlags OR ADS_UF_DONT_EXPIRE_PASSWD
 'objUser.Put "userFlags", objPasswordExpirationFlag
 'objUser.SetInfo
+
+Set WshShell = CreateObject("WScript.Shell") 
+  'dim shall 
+  'shall = WshShell.ExpandEnvironmentStrings("%windir%") 
+  'WshShell.CurrentDirectory = WshShell.ExpandEnvironmentStrings("%UserProfile%") 
+  'WScript.Echo "Standart Catalog: " + vbTab + WshShell.CurrentDirectory + vbNewLine + "Operation system catalog: " + vbTab + shall 
+
