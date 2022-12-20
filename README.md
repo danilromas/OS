@@ -227,3 +227,19 @@ zad 3
   ' s=s & SpecFldr & vbCrLf 
   'Next 
   'WScript.Echo s 
+
+
+zad 5 
+   
+  'Set WshShell = Wscript.CreateObject("WScript.Shell") 
+  'Set DesktopPath = WshShell.SpecialFolders 
+   
+  'CreateShortcut - возвращает объект "WshShortcut" или "WshURLShortcut", указывающий на ярлык .lnk или .url. 
+   
+  'set MyShortcut = WshShell.CreateShortcut(DesktopPath("Desktop") + "\YANDEX.lnk") 
+   
+  'TargetPath - Возвращаемое значение: строка, содержащая путь к исполняемому файлу. 
+   
+  'MyShortcut.TargetPath = "https://www.yandex.ru" 
+  'MyShortcut.Save() 
+   
