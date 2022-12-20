@@ -1,4 +1,4 @@
-79# OS
+I79# OS
 
 'Laba 4
 
@@ -263,3 +263,22 @@ zad 5
   'MyShortcut.Hotkey = "CTRL+ALT+f" 
   'MyShortcut.WorkingDirectory = WshShell.ExpandEnvironmentStrings("%TEMP%") 
   'MyShortcut.Save()  
+
+zad 6 
+   
+  'Set WshNetwork = CreateObject("Wscript.Network") 
+  'MsgBox "Computer name: " + WshNetwork.ComputerName + vblf + "User name: " + WshNetwork.UserName 
+   
+  'zad 7 
+   
+  'Set WshNetwork = Wscript.CreateObject("WScript.Network") 
+   
+  'EnumNetworkDrives - Возвращает коллекцию сетевых дисков. Нечётные элементы содержат UNC-пути сетевых дисков. 
+   
+  'Set Drives = WshNetwork.EnumNetworkDrives 
+  'for i = 0 to Drives.Count - 1 Step 2 
+  'MsgBox "Connected network disks: " + vblf + "Disk: " & Drives.Item(i) & " + " & Drives.Item(i+1) + vblf + "Kol-vo connected network disks: " & Drives.Count/2 
+  'Next
+  [Ссылка]
+  Loading...
+  http://WshShell.Run
